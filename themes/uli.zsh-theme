@@ -1,6 +1,6 @@
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX\ue0a0$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)\ue0a0$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function get_pwd() {
@@ -53,5 +53,5 @@ function put_spacing() {
 PROMPT='$fg[cyan]$USER@%m:$fg[yellow]$(get_cwd)$(git_prompt_info)%{$reset_color%} '
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX="$reset_color"
-ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]"
-ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
+ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]✘ %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]✔ %{$reset_color%}"
